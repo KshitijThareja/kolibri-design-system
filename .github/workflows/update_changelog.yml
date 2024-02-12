@@ -31,6 +31,7 @@ jobs:
           else
             description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
             changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
+            echo changelog_section
             echo "changelog=${changelog_section}" >> $GITHUB_OUTPUT
           fi
   
