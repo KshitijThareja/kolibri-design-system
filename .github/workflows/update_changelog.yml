@@ -16,11 +16,6 @@ jobs:
     permissions: write-all
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-      
-      - name: Display structure of downloaded files
-        run: ls -R
 
       - name: Check if PR is from dependabot
         id: check-dependabot
@@ -28,30 +23,21 @@ jobs:
           is_dependabot=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)
           echo "is_dependabot=$is_dependabot" >> $GITHUB_OUTPUT
         
-
-      - name: Read containsChangelog value
-        id: read-contains-changelog
-        run: |
-          containsChangelog=$(cat pr-description-info/containsChangelog.txt)
-          echo "Value of containsChangelog: $containsChangelog"
-          echo "containsChangelog=$containsChangelog" >> $GITHUB_OUTPUT
-
       - name: Extract Changelog from PR description
-        if: steps.read-contains-changelog.outputs.containsChangelog == 'true'
         id: extract-changelog
         run: |
-          description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
-          changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
-          echo "changelog=${changelog_section}" >> $GITHUB_OUTPUT
+          if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
+            changelog_section="**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n" 
+            echo "changelog=${changelog_section}" >> $GITHUB_OUTPUT
+          else
+            description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
+            changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
+            echo "changelog=${changelog_section}" >> $GITHUB_OUTPUT
+          fi
       
       - name: Update Changelog in main branch
-        if: steps.check-dependabot.outputs.is_dependabot == 'dependabot[bot]' || steps.read-contains-changelog.outputs.containsChangelog == 'true'
         run: |
           changelog_content="${{ steps.extract-changelog.outputs.changelog }}"
-          if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
-            changelog_content="**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n" 
-          fi
-
           pr_number=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
@@ -61,7 +47,6 @@ jobs:
           sed -i "/<!-- Put all new updates into this section, please -->/a\\$changelog_content" CHANGELOG.md
         
       - name: Commit updated CHANGELOG
-        if: steps.check-dependabot.outputs.is_dependabot == 'dependabot[bot]' || steps.read-contains-changelog.outputs.containsChangelog == 'true'
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
             branch: ${{ github.event.pull_request.base.ref }}
