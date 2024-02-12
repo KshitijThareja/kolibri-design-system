@@ -37,5 +37,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pr-description-info
-          path: pr-description-info/containsChangelog.txt
+          path: containsChangelog.txt
           if-no-files-found: error

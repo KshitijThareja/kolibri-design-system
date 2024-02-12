@@ -20,7 +20,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: pr-description-info
-          path: pr-description-info
+          path: .
 
       - name: Check if PR is from dependabot
         id: check-dependabot
