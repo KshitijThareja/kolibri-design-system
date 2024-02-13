@@ -35,9 +35,10 @@ jobs:
           fi
           # echo "::set-output name=changelog::$(echo "$changelog" | jq -Rs .)"
           pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pr_link="[#${pr_number}]"
-          pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
-          echo "${pr_link}" > pr_info.txt
+          echo $pr_number
+        
+          pr_link_ref="${{ github.event.pull_request.html_url }}"
+          
           echo "${changelog}" | jq -r .changelog >> pr_info.txt
           echo "${pr_link_ref}" >> pr_info.txt
           sed -i "/<!-- Put all new updates into this section, please -->/r pr_info.txt" CHANGELOG.md
