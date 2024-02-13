@@ -27,18 +27,19 @@ jobs:
         id: extract-changelog
         run: |
           if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
-            echo "changelog=**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n" >> $GITHUB_OUTPUT
+            changelog="**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n"
           else
             description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
             changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
-            echo changelog_section
-            echo "changelog=${changelog_section}" >> $GITHUB_OUTPUT
+            changelog="changelog=${changelog_section}"
           fi
+          echo "::set-output name=changelog::$(echo "$changelog" | jq -Rs .)"
+  
   
       
       - name: Update Changelog in main branch
         run: |
-          changelog_content="${{ steps.extract-changelog.outputs.changelog }}"
+          changelog_content=$(echo "${{ steps.extract-changelog.outputs.changelog }}" | jq -r .)
           pr_number=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
