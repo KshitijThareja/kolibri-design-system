@@ -39,7 +39,7 @@ jobs:
       
       - name: Update Changelog in main branch
         run: |
-          changelog_content="${{ steps.extract-changelog.outputs.changelog }}"
+          changelog_content='${{ steps.extract-changelog.outputs.changelog }}'
           pr_number=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
