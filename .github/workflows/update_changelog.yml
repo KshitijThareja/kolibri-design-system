@@ -39,18 +39,20 @@ jobs:
       
       - name: Update Changelog in main branch
         run: |
-          changelog_content="${{ steps.extract-changelog.outputs.changelog }}"
           pr_number=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
-          changelog_content="${pr_link}\n${changelog_content}\n${pr_link_ref}\n"
+          
+          # Store changelog content and PR details in a file
+          echo -e "$pr_link" > changelog_content.txt
+          echo -e "${{ steps.extract-changelog.outputs.changelog }}" >> changelog_content.txt
+          echo -e "$pr_link_ref" >> changelog_content.txt
       
           # Remove leading and trailing whitespace
-          changelog_content=$(echo -n "$changelog_content" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          changelog_content=$(cat changelog_content.txt | sed -e 's/^[ \t]*//' -e 's/[ \t]*$//')
       
           # Append changelog_content to CHANGELOG.md
           printf "%s\n" "$changelog_content" >> CHANGELOG.md
-        shell: bash
         
       - name: Commit updated CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v4
