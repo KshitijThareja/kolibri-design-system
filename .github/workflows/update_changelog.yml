@@ -33,9 +33,7 @@ jobs:
             changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
             changelog="changelog=${changelog_section}"
           fi
-          # echo "::set-output name=changelog::$(echo "$changelog" | jq -Rs .)"
-          pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          echo $pr_number
+    
         
           pr_link_ref="${{ github.event.pull_request.html_url }}"
           
