@@ -33,26 +33,18 @@ jobs:
             changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
             changelog="changelog=${changelog_section}"
           fi
-          echo "::set-output name=changelog::$(echo "$changelog" | jq -Rs .)"
-  
-  
-      
-      - name: Update Changelog in main branch
-        run: |
+          # echo "::set-output name=changelog::$(echo "$changelog" | jq -Rs .)"
           pr_number=$(jq -r ".pull_request.number" "$GITHUB_EVENT_PATH")
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
-          
-          # Store changelog content and PR details in a file
-          echo -e "$pr_link" > changelog_content.txt
-          printf "%s\n" "${{ steps.extract-changelog.outputs.changelog }}" >> changelog_content.txt
-          echo -e "$pr_link_ref" >> changelog_content.txt
+          echo "${pr_link}" > pr_info.txt
+          echo "${changelog}" | jq -r .changelog >> pr_info.txt
+          echo "${pr_link_ref}" >> pr_info.txt
+          sed -i "/<!-- Put all new updates into this section, please -->/r pr_info.txt" CHANGELOG.md
+
+  
       
-          # Remove leading and trailing whitespace
-          changelog_content=$(cat changelog_content.txt | sed -e 's/^[ \t]*//' -e 's/[ \t]*$//')
       
-          # Append changelog_content to CHANGELOG.md
-          printf "%s\n" "$changelog_content" >> CHANGELOG.md
         
       - name: Commit updated CHANGELOG
         uses: stefanzweifel/git-auto-commit-action@v4
