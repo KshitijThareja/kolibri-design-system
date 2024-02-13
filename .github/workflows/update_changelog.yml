@@ -46,7 +46,7 @@ jobs:
           # Store changelog content and PR details in a file
           echo -e "$pr_link" > changelog_content.txt
           echo -e "${{ steps.extract-changelog.outputs.changelog }}" >> changelog_content.txt
-          echo -e "$pr_link_ref" >> changelog_content.txt
+          printf "%s\n" "${{ steps.extract-changelog.outputs.changelog }}" >> changelog_content.txt
       
           # Remove leading and trailing whitespace
           changelog_content=$(cat changelog_content.txt | sed -e 's/^[ \t]*//' -e 's/[ \t]*$//')
