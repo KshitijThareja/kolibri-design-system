@@ -26,6 +26,7 @@ jobs:
       - name: Extract Changelog from PR description
         id: extract-changelog
         run: |
+          ls -l
           if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
             changelog="**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n"
           else
