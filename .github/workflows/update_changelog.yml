@@ -30,14 +30,14 @@ jobs:
         run: |
           ls -l
           if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
-            changelog="**Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n"
+            changelog="- **Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n"
           else
             description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
             changelog_section=$(echo "$description" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
-            changelog="${changelog_section}"
+            changelog="- **Description:** ${{ github.event.pull_request.title }}\n- **Products impact:** Dev Dependency upgrade\n- **Addresses:** -\n- **Components:** -\n- **Breaking:** -\n- **Impacts a11y:** -\n- **Guidance:** -\n\n"
           fi
           pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pr_link="-[#${pr_number}]"
+          pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
           echo "- ${pr_link}" > pr_info.txt
           echo -e "  ${changelog}" >> pr_info.txt
