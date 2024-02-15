@@ -37,9 +37,9 @@ jobs:
             changelog="${changelog_section}"
           fi
           pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-          pr_link="[#${pr_number}]"
+          pr_link="-[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
-          echo "${pr_link}" > pr_info.txt
+          echo "- ${pr_link}" > pr_info.txt
           echo -e "  ${changelog}" >> pr_info.txt
           echo >> pr_info.txt
           echo "${pr_link_ref}" >> pr_info.txt
