@@ -17,7 +17,6 @@ jobs:
                repos/${owner}/${REPO}/pulls/${PULL_NUMBER}/files)
               echo "$response" | jq '.' > response.json
               
-          
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               owner: ${{ github.repository_owner }}
