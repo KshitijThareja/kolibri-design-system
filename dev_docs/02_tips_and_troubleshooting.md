@@ -1,4 +1,7 @@
 
+# Tips and troubleshooting
+
+Here, you can find development and troubleshooting tips. 
 
 ## `ESOCKETTIMEDOUT` error
 
