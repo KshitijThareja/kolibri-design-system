@@ -4,7 +4,8 @@ Changelog is rather internal in nature. See release notes for the public overvie
 
 ## Upcoming version
 
-<!-- Put all new updates into this section, please -->
+<!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
+
 
 - [#531]
   - **Description:** Remove unused `keen-ui` dependency
