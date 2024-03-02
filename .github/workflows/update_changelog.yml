@@ -34,11 +34,11 @@ jobs:
           if [ "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]; then
             changelog="- **Description:** ${{ github.event.pull_request.title }}\n  - **Products impact:** Dev Dependency upgrade\n  - **Addresses:** -\n  - **Components:** -\n  - **Breaking:** -\n  - **Impacts a11y:** -\n  - **Guidance:** -"
           else
-            description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
-            changelog_section=$(echo "$description" | awk '/<!-- \[DO NOT REMOVE-USED BY GH ACTION\] CHANGELOG START -->/{flag=1; next} /<!-- \[DO NOT REMOVE-USED BY GH ACTION\] CHANGELOG END -->/{flag=0} flag' | sed '/<!--/,/-->/d')
-            pr_link_formatted=$(echo "$pr_link" | sed 's/^/- /')
-            description_with_links=$(echo "$changelog_section" | sed "s/\\(- **Description:**\\)/$pr_link_formatted\\1/g")
-            changelog="${description_with_links}"
+            description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH" | awk '/<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG START -->/{flag=1; next} /<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG END -->/{flag=0} flag')
+            pr_link_formatted=$(echo "$pr_link" | sed 's/\//\\\//g') # Escape slashes for sed
+            description_with_links=$(echo "$description" | sed "/- \*\*Description:\*\*/{s//- $pr_link_formatted\n  - **Description:**/;:a;n;ba}")
+            changelog_section=$(echo "$description_with_links" | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
+            changelog="${changelog_section}"
           fi
 
           echo "${changelog}" > changelog_output.txt
