@@ -3,9 +3,6 @@
 
 Here, you can find development and troubleshooting tips. 
 
-## `ESOCKETTIMEDOUT` error
-
-If you see a timeout error like `ESOCKETTIMEDOUT` during `yarn install`, you can configure yarn with a higher timeout value [as described here](https://github.com/yarnpkg/yarn/issues/5540#issuecomment-374069461).
 
 ## `System limit for number of file watchers reached` error
 
