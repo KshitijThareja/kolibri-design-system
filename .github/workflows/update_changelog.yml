@@ -44,7 +44,7 @@ jobs:
           echo >> pr_info.txt
           echo "${pr_link_ref}" >> pr_info.txt
           echo >> pr_info.txt
-
+          cat pr_info.txt
           sed -i "/<!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->/r pr_info.txt" CHANGELOG.md
         
       - name: Commit updated CHANGELOG.md
