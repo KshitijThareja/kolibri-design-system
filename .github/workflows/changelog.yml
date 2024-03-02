@@ -34,7 +34,7 @@ jobs:
 
       - name: Results
         run: |
-          if [[ "${{ steps.check_description.outputs.containsChangelog }}" == "true" || ${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot] ]]; then
+          if [[ "${{ steps.check_description.outputs.containsChangelog }}" == "true" || "${{ steps.check-dependabot.outputs.is_dependabot }}" == "dependabot[bot]" ]]; then
             echo "PR contains Changelog section/ PR made by Dependabot"
             exit 0
           else
