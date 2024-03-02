@@ -31,7 +31,7 @@ jobs:
           changelog="- **Description:** ${{ github.event.pull_request.title }}\n  - **Products impact:** Dev Dependency upgrade\n  - **Addresses:** -\n  - **Components:** -\n  - **Breaking:** -\n  - **Impacts a11y:** -\n  - **Guidance:** -"
           else
             description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH")
-            changelog_section=$(echo "$description" | awk '/<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG START -->/{flag=1; next} /<!-- [DO NOT REMOVE-USED BY GH ACTION] CHANGELOG END -->/{flag=0} flag' | sed '/<!--/,/-->/d' | sed '/<!--/,/-->/d' | sed '1d;$d')
+            changelog_section=$(echo "$description" | awk '/<!-- \[DO NOT REMOVE-USED BY GH ACTION\] CHANGELOG START -->/{flag=1; next} /<!-- \[DO NOT REMOVE-USED BY GH ACTION\] CHANGELOG END -->/{flag=0} flag' | sed '/<!--/,/-->/d')
             changelog="${changelog_section}"
           fi
           echo {$changelog}
