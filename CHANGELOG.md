@@ -5,6 +5,10 @@ Changelog is rather internal in nature. See release notes for the public overvie
 ## Upcoming version
 
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
+- [#50]
+  
+[#50]: https://github.com/KshitijThareja/kolibri-design-system/pull/50
+
 - [#49]
   
 
