@@ -39,15 +39,18 @@ jobs:
           pr_link="[#${pr_number}]"
           pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
 
-          entries=$(echo "$changelog" | awk '/- **Description:**/{print}')
+          while read -r entry; do
+              pr_number=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+              pr_link="[#${pr_number}]"
+              pr_link_ref="[#${pr_number}]: ${{ github.event.pull_request.html_url }}"
 
-          for entry in "${entries[@]}"; do
-            echo "- ${pr_link}" > pr_info.txt
-            echo -e "  ${entry}" >> pr_info.txt
-            echo "${pr_link_ref}" >> pr_info.txt
-            echo >> pr_info.txt
-            awk '/<!-- \[DO NOT REMOVE-USED BY GH ACTION\] PASTE CHANGELOG -->/{print; system("cat pr_info.txt"); next} 1' CHANGELOG.md > tmpfile && mv tmpfile CHANGELOG.md
-          done
+              echo "- ${pr_link}" > pr_info.txt
+              echo "$entry" >> pr_info.txt
+              echo "${pr_link_ref}" >> pr_info.txt
+              echo >> pr_info.txt
+              awk '/<!-- \[DO NOT REMOVE-USED BY GH ACTION\] PASTE CHANGELOG -->/{print; system("cat pr_info.txt"); next} 1' CHANGELOG.md > tmpfile && mv tmpfile CHANGELOG.md
+            done <<< "$(echo "$changelog_section" | awk '/- \*\*Description:\*\*/,/- \*\*Guidance:\*\*/')"
+          fi
         
       - name: Commit updated CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v4
