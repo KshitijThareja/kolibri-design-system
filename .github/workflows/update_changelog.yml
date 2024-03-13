@@ -50,7 +50,7 @@ jobs:
               echo >> pr_info.txt
               awk '/<!-- \[DO NOT REMOVE-USED BY GH ACTION\] PASTE CHANGELOG -->/{print; system("cat pr_info.txt"); next} 1' CHANGELOG.md > tmpfile && mv tmpfile CHANGELOG.md
             done <<< "$(echo "$changelog_section" | awk '/- \*\*Description:\*\*/,/- \*\*Guidance:\*\*/')"
-          fi
+          
         
       - name: Commit updated CHANGELOG.md
         uses: stefanzweifel/git-auto-commit-action@v4
