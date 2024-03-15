@@ -41,7 +41,7 @@ jobs:
 
           while IFS= read -r entry; do
           if [[ $entry == *"- **Description:"* ]]; then
-              echo -e "${pr_link}"
+              echo -e "- ${pr_link}\n"
           fi
           echo -e "\t${entry}"
           if [[ $entry == *"- **Guidance:"* ]]; then
