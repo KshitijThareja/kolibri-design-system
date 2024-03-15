@@ -41,12 +41,11 @@ jobs:
 
           while IFS= read -r entry; do
           if [[ $entry == *"- **Description:"* ]]; then
-              echo "- ${pr_link}"
+              echo -e "${pr_link}"
           fi
-          echo "  ${entry}" | sed 's/^/    /'
+          echo -e "    ${entry}"
           if [[ $entry == *"- **Guidance:"* ]]; then
-              echo "${pr_link_ref}"
-              echo
+              echo -e "${pr_link_ref}\n"
           fi
           done <<< "$changelog_section" > pr_info.txt
 
