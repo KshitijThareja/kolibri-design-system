@@ -43,9 +43,9 @@ jobs:
           if [[ $entry == *"- **Description:"* ]]; then
               echo -e "${pr_link}"
           fi
-          echo -e "    ${entry}"
+          echo -e "\t${entry}"
           if [[ $entry == *"- **Guidance:"* ]]; then
-              echo -e "${pr_link_ref}\n"
+              echo -e "\n${pr_link_ref}\n"
           fi
           done <<< "$changelog_section" > pr_info.txt
 
