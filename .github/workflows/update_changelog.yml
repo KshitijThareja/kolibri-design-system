@@ -57,3 +57,4 @@ jobs:
             branch: ${{ github.event.pull_request.base.ref }}
             commit_message: "Update CHANGELOG.md w/ PR #${{ github.event.pull_request.number }}"
             file_pattern: CHANGELOG.md
+            

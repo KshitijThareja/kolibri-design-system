@@ -25,7 +25,9 @@ jobs:
           )
           echo "$description"
           default_description="Summary of change(s)"
-          if [ "$description" != "$default_description" ]; then
+          if [ -z "$description" ]; then
+            echo "containsChangelog=false" >> $GITHUB_OUTPUT
+          elif [ "$description" != "$default_description" ]; then
             echo "containsChangelog=true" >> $GITHUB_OUTPUT
           else
             echo "containsChangelog=false" >> $GITHUB_OUTPUT
