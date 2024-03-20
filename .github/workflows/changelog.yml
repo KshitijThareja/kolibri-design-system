@@ -21,7 +21,7 @@ jobs:
       - name: Check PR Description
         id: check_description
         run: |
-          description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | grep -m 1 '**Description:' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -d':' -f2- | sed 's/^\*\* //'
+          description=$(jq -r ".pull_request.body" "$GITHUB_EVENT_PATH" | awk '/## Changelog/{flag=1; next} /##/{flag=0} flag' | grep -m 1 '**Description:**' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' | cut -d':' -f2- | sed 's/^\*\* //'
           )
           echo "$description"
           default_description="Summary of change(s)"
