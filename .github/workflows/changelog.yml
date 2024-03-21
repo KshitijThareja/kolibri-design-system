@@ -39,3 +39,4 @@ jobs:
             echo "Changelog section is missing or does not contain the required details"
             exit 1
           fi
+          
