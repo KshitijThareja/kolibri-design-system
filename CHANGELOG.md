@@ -5,6 +5,284 @@ Changelog is rather internal in nature. See release notes for the public overvie
 ## Upcoming version
 
 <!-- [DO NOT REMOVE-USED BY GH ACTION] PASTE CHANGELOG -->
+	
+	
+- [#64]
+
+	- **Description:** Summary of change(s)
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#64]: https://github.com/KshitijThareja/kolibri-design-system/pull/64
+
+	
+	
+	
+- [#63]
+
+	- **Description:** 
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#63]: https://github.com/KshitijThareja/kolibri-design-system/pull/63
+
+	
+	
+	
+- [#62]
+
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#62]: https://github.com/KshitijThareja/kolibri-design-system/pull/62
+
+	
+	
+	
+- [#61]
+
+	- **Description:** 
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#61]: https://github.com/KshitijThareja/kolibri-design-system/pull/61
+
+	
+	
+	
+- [#59]
+
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#59]: https://github.com/KshitijThareja/kolibri-design-system/pull/59
+
+	
+	
+	
+- [#58]
+
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#58]: https://github.com/KshitijThareja/kolibri-design-system/pull/58
+
+	
+- [#58]
+
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#58]: https://github.com/KshitijThareja/kolibri-design-system/pull/58
+
+	
+- [#58]
+
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#58]: https://github.com/KshitijThareja/kolibri-design-system/pull/58
+
+	
+	
+	
+	
+[#57]
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#57]: https://github.com/KshitijThareja/kolibri-design-system/pull/57
+
+	
+[#57]
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#57]: https://github.com/KshitijThareja/kolibri-design-system/pull/57
+
+	
+[#57]
+	- **Description:** Verification of the changed flows
+	- **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+	- **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+	- **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+	- **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+	- **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+	- **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#57]: https://github.com/KshitijThareja/kolibri-design-system/pull/57
+
+	
+	
+    
+    
+[#56]
+    - **Description:** Verification of the changed flows
+    - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+    - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+    - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+    - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+    - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+    - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#56]: https://github.com/KshitijThareja/kolibri-design-system/pull/56
+
+    
+[#56]
+    - **Description:** Verification of the changed flows
+    - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+    - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+    - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+    - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+    - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+    - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#56]: https://github.com/KshitijThareja/kolibri-design-system/pull/56
+
+    
+[#56]
+    - **Description:** Verification of the changed flows
+    - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+    - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+    - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+    - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+    - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+    - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#56]: https://github.com/KshitijThareja/kolibri-design-system/pull/56
+
+    
+    
+      
+      
+- [#55]
+      - **Description:** Verification of the changed flows
+      - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+      - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+      - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+      - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+      - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+      - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#55]: https://github.com/KshitijThareja/kolibri-design-system/pull/55
+
+      
+- [#55]
+      - **Description:** Verification of the changed flows
+      - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+      - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+      - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+      - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+      - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+      - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#55]: https://github.com/KshitijThareja/kolibri-design-system/pull/55
+
+      
+- [#55]
+      - **Description:** Verification of the changed flows
+      - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+      - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+      - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+      - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+      - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+      - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+[#55]: https://github.com/KshitijThareja/kolibri-design-system/pull/55
+
+      
+      
+
+
+- [#54]
+  - **Description:** Verification of the changed flows
+  - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+  - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+  - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+  - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+  - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+  - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+    
+[#54]: https://github.com/KshitijThareja/kolibri-design-system/pull/54
+
+
+- [#54]
+  - **Description:** Verification of the changed flows
+  - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+  - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+  - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+  - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+  - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+  - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#54]: https://github.com/KshitijThareja/kolibri-design-system/pull/54
+
+
+- [#54]
+  - **Description:** Verification of the changed flows
+  - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+  - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+  - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+  - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+  - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+  - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+    
+[#54]: https://github.com/KshitijThareja/kolibri-design-system/pull/54
+
+- [#45]
+  
+
+  - **Description:** Check if updates are working
+  - **Products impact:** Choose from - none (for internal updates) / bugfix / new API / updated API / removed API. If it's 'none', use "-" for all items below to indicate they are not relevant.
+  - **Addresses:** Link(s) to GH issue(s) addressed. Include KDS links as well as links to related issues in a consumer product repository too.
+  - **Components:** Affected public KDS component. Do not include internal sub-components or documentation components.
+  - **Breaking:** Will this change break something in a consumer? Choose from: yes / no
+  - **Impacts a11y:** Does this change improve a11y or adds new features that can be used to improve it? Choose from: yes / no
+  - **Guidance:** Why and how to introduce this update to a consumer? Required for breaking changes, appreciated for changes with a11y impact, and welcomed for non-breaking changes when relevant.
+
+[#45]: https://github.com/KshitijThareja/kolibri-design-system/pull/45
+
 
 - [#531]
   - **Description:** Remove unused `keen-ui` dependency

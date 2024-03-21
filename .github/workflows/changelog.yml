@@ -38,6 +38,4 @@ jobs:
           else
             echo "PR does not contain Changelog section"
             exit 1
-          fi
-        
-          
+          fi    
