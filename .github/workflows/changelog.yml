@@ -36,8 +36,6 @@ jobs:
             echo "PR contains Changelog section/ PR made by Dependabot"
             exit 0
           else
-            echo "PR does not contain Changelog section"
+            echo "Changelog section is missing or does not contain the required details"
             exit 1
           fi
-          
-          
