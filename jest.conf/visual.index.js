@@ -87,7 +87,7 @@ const runServerChecks = async () => {
 
 module.exports = async () => {
   try {
-    validatePercyToken();
+    // validatePercyToken();
     await runServerChecks();
     return {
       rootDir: path.resolve(__dirname, '..'),
