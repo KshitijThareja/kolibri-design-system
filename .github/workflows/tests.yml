@@ -76,6 +76,8 @@ jobs:
               done
           - name: Run visual tests
             run: yarn test:visual
+            env:
+              PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
           - name: Post results comment
             uses: actions/github-script@v6
             with:
