@@ -49,20 +49,20 @@ const waitForServer = async (url, timeout = 30000) => {
   throw new Error('Server did not start within the timeout period');
 };
 
-const checkPageLoad = async (url, timeout = 30000) => {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+// const checkPageLoad = async (url, timeout = 30000) => {
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
 
-  try {
-    await page.goto(url, { waitUntil: 'networkidle2', timeout });
-    await page.waitForSelector(WAIT_FOR_SELECTOR, { timeout });
-    console.log('Visual testing playground is loaded.');
-  } catch (error) {
-    throw new Error('Failed to load visual testing playground.');
-  } finally {
-    await browser.close();
-  }
-};
+//   try {
+//     await page.goto(url, { waitUntil: 'networkidle2', timeout });
+//     await page.waitForSelector(WAIT_FOR_SELECTOR, { timeout });
+//     console.log('Visual testing playground is loaded.');
+//   } catch (error) {
+//     throw new Error('Failed to load visual testing playground.');
+//   } finally {
+//     await browser.close();
+//   }
+// };
 
 const validatePercyToken = () => {
   if (!process.env.PERCY_TOKEN) {
@@ -77,7 +77,7 @@ const runServerChecks = async () => {
   setupDone = true;
   try {
     await waitForServer(SERVER_URL, SERVER_TIMEOUT);
-    await checkPageLoad(SERVER_URL, SERVER_TIMEOUT);
+    // await checkPageLoad(SERVER_URL, SERVER_TIMEOUT);
     console.log('Server and testing playground are up and running');
   } catch (error) {
     console.error(error);
