@@ -43,7 +43,7 @@ jobs:
   visual_tests:
     name: Visual tests
     needs: test
-    if: ${{ github.event_name == 'pull_request' && needs.test.result == 'success' }}
+    if: ${{ needs.test.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
