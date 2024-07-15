@@ -77,7 +77,7 @@ const runServerChecks = async () => {
   setupDone = true;
   try {
     await waitForServer(SERVER_URL, SERVER_TIMEOUT);
-    // await checkPageLoad(SERVER_URL, SERVER_TIMEOUT);
+    await checkPageLoad(SERVER_URL, SERVER_TIMEOUT);
     console.log('Server and testing playground are up and running');
   } catch (error) {
     console.error(error);
