@@ -62,19 +62,9 @@ jobs:
             run: |
               yarn --frozen-lockfile
               npm rebuild node-sass
-          - name: Start dev server
-            run: yarn dev-only &
-            env:
-              HOST: '0.0.0.0'
-              PORT: '4000'
-          - name: Wait for dev server to be ready
-            run: |
-              echo "Waiting for dev server to be ready..."
-              for i in {1..60}; do
-                curl -sSf http://localhost:4000/testing-playground && break
-                sleep 5
-              done
           - name: Run visual tests
-            run: yarn test:percy
+            run: yarn test:visual
             env:
               PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+              HOST: '0.0.0.0'
+              PORT: '4000'
