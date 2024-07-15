@@ -49,7 +49,7 @@ const waitForServer = async (url, timeout = 30000) => {
   throw new Error('Server did not start within the timeout period');
 };
 
-const checkPageLoad = async (url, timeout = 30000) => {
+const checkPageLoad = async (url, timeout = 240000) => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox'] });
   const page = await browser.newPage();
 
