@@ -5,7 +5,7 @@ const puppeteer = require('puppeteer');
 /* eslint-disable no-console */
 
 const SERVER_URL = 'http://localhost:4000/testing-playground';
-const SERVER_TIMEOUT = 360000;
+const SERVER_TIMEOUT = 600000;
 const WAIT_FOR_SELECTOR = '#testing-playground';
 let setupDone = false;
 

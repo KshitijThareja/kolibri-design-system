@@ -62,19 +62,7 @@ jobs:
         run: |
           yarn --frozen-lockfile
           npm rebuild node-sass
-      - name: Start server
-        run: |
-          yarn dev-only > server.log 2>&1 &
-          sudo apt-get install -y curl
-          until curl -sSf http://localhost:4000/testing-playground; do
-            echo "Waiting for server..."
-            sleep 5
-          done
-      - name: Print server logs
-        run: cat server.log
       - name: Run visual tests
-        run: yarn test:percy
+        run: yarn test:visual
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          HOST: '0.0.0.0'
-          PORT: '4000'
