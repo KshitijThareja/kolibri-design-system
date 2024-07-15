@@ -75,27 +75,6 @@ jobs:
                 sleep 5
               done
           - name: Run visual tests
-            run: yarn test:visual
+            run: yarn test:percy
             env:
               PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-          - name: Post results comment
-            uses: actions/github-script@v6
-            with:
-              github-token: ${{ secrets.GITHUB_TOKEN }}
-              script: |
-                const percyUrl = `Percy build URL: ${process.env.PERCY_BUILD_URL}`;
-                const commentBody = `
-                ### Percy Visual Test Results
-                ${percyUrl}
-                **Summary:**
-                - Visual diff locations
-                - [Percy Dashboard](${percyUrl})
-                **Instructions for reviewers:**
-                - Access the Percy dashboard to review visual changes.
-                `;
-                github.issues.createComment({
-                  issue_number: context.payload.pull_request.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: commentBody
-                });
