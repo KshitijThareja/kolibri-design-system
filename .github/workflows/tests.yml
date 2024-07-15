@@ -40,31 +40,57 @@ jobs:
     - name: Run tests
       run: yarn test
 
+  start_server:
+    name: Start Server for Visual Tests
+    needs: test
+    if: ${{ needs.test.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+      - name: Install dependencies
+        run: |
+          yarn --frozen-lockfile
+          npm rebuild node-sass
+      - name: Start dev server
+        run: yarn dev-only &
+        env:
+          HOST: '0.0.0.0'
+          PORT: '4000'
+      - name: Wait for dev server to be ready
+        run: |
+          echo "Waiting for dev server to be ready..."
+          for i in {1..60}; do
+            curl -sSf http://localhost:4000/testing-playground && break
+            sleep 5
+          done
+    
   visual_tests:
-        name: Frontend Visual Tests
-        needs: test
-        if: ${{ needs.test.result == 'success' }}
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-          - name: Use Node.js
-            uses: actions/setup-node@v4
-            with:
-              node-version: '18.x'
-          - name: Cache Node.js modules
-            uses: actions/cache@v4
-            with:
-              path: '**/node_modules'
-              key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
-              restore-keys: |
-                ${{ runner.OS }}-node-
-          - name: Install dependencies
-            run: |
-              yarn --frozen-lockfile
-              npm rebuild node-sass
-          - name: Run visual tests
-            run: yarn test:visual
-            env:
-              PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
-              HOST: '0.0.0.0'
-              PORT: '4000'
+    name: Frontend Visual Tests
+    needs: start_server
+    if: ${{ needs.start_server.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+      - name: Cache Node.js modules
+        uses: actions/cache@v4
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.OS }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.OS }}-node-
+      - name: Install dependencies
+        run: |
+          yarn --frozen-lockfile
+          npm rebuild node-sass
+      - name: Run visual tests
+        run: yarn test:percy
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
