@@ -43,8 +43,6 @@ jobs:
   visual_tests:
     name: Frontend Visual Tests
     needs: test
-    env:
-      CI: true
     if: ${{ needs.test.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
@@ -64,7 +62,13 @@ jobs:
         run: |
           yarn --frozen-lockfile
           npm rebuild node-sass
+      - name: Start server
+        run: |
+          sudo apt-get install expect
+          unbuffer yarn dev > server.log 2>&1 &
+          sleep 30
+          cat server.log
       - name: Run visual tests
-        run: yarn test:percy
+        run: yarn test:visual
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
