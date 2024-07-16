@@ -64,11 +64,10 @@ jobs:
           npm rebuild node-sass
       - name: Start server
         run: |
-          sudo apt-get install expect
-          unbuffer yarn dev > server.log 2>&1 &
-          sleep 30
-          cat server.log
+          yarn dev &
+          sleep 60 &&
+          curl -sSf http://localhost:4000/testing-playground
       - name: Run visual tests
-        run: yarn test:visual
+        run: yarn test:percy
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
