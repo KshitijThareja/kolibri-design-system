@@ -81,6 +81,8 @@ jobs:
         run: |
           url=$(grep -o 'https://percy.io/[a-zA-Z0-9/_-]*' test-output.log | tail -1)
           echo "PERCY_BUILD_URL=$url" >> $GITHUB_ENV
+          echo "::set-output name=percy_url::$url"
+          echo "percy_url=$url" >> $GITHUB_OUTPUT
           echo "Percy build URL: $url"
     
   comment:
@@ -97,14 +99,10 @@ jobs:
         with:
           message: |
             ### Percy Visual Test Results
-            [Percy Dashboard](${{
-              env.PERCY_BUILD_URL
-            }})
+            [Percy Dashboard](${{ steps.visual_tests.outputs.percy_url }})
             **Summary:**
             - Visual diff locations
-            - [Percy Dashboard](${{
-              env.PERCY_BUILD_URL
-            }})
+            - [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }})
             **Instructions for reviewers:**
             - Access the Percy dashboard to review visual changes.
           comment_tag: execution
