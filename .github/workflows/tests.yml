@@ -45,6 +45,8 @@ jobs:
     needs: test
     if: ${{ github.event_name == 'pull_request' && needs.test.result == 'success' }}
     runs-on: ubuntu-latest
+    outputs:
+      percy_url: ${{ steps.extract-url.outputs.percy_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -83,6 +85,9 @@ jobs:
           echo "PERCY_BUILD_URL=$url" >> $GITHUB_ENV
           echo "percy_url=$url" >> $GITHUB_OUTPUT
           echo "Percy build URL: $url"
+      - name: Check extracted Percy URL
+        run: |
+          echo "Extracted Percy URL: ${{ steps.extract-url.outputs.percy_url }}"
     
   comment:
     name: Comment Percy results
