@@ -81,7 +81,6 @@ jobs:
         run: |
           url=$(grep -o 'https://percy.io/[a-zA-Z0-9/_-]*' test-output.log | tail -1)
           echo "PERCY_BUILD_URL=$url" >> $GITHUB_ENV
-          echo "::set-output name=percy_url::$url"
           echo "percy_url=$url" >> $GITHUB_OUTPUT
           echo "Percy build URL: $url"
     
@@ -91,6 +90,9 @@ jobs:
     if: ${{ needs.visual_tests.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Check Percy URL
+        run: | 
+          echo "Percy URL: ${{ needs.visual_tests.outputs.percy_url }}"
       - name: Post results comment
         uses: thollander/actions-comment-pull-request@v2
         env:
@@ -99,7 +101,7 @@ jobs:
         with:
           message: |
             ### Percy Visual Test Results
-            [Percy Dashboard](${{ steps.visual_tests.outputs.percy_url }})
+            [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }})
             **Summary:**
             - Visual diff locations
             - [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }})
