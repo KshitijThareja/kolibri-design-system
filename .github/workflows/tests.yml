@@ -85,14 +85,13 @@ jobs:
         id: parse_results
         run: |
           url=$(grep -o 'https://percy.io/[a-zA-Z0-9/_-]*' test-output.log | tail -1)
-          TOTAL_TESTS=$(grep -oP 'Tests:\s+\K\d+' test_output.log)
-          PASSED_TESTS=$(grep -oP 'Tests:\s+\d+\s+passed\s+\(\K\d+' test_output.log)
+          TOTAL_TESTS=$(grep -oP 'Tests:\s+\K\d+' test-output.log)
+          PASSED_TESTS=$(grep -oP 'Tests:\s+\d+\s+passed\s+\(\K\d+' test-output.log)
           FAILED_TESTS=$((TOTAL_TESTS - PASSED_TESTS))
           echo "total_tests=$TOTAL_TESTS" >> $GITHUB_OUTPUT
           echo "passed_tests=$PASSED_TESTS" >> $GITHUB_OUTPUT
           echo "failed_tests=$FAILED_TESTS" >> $GITHUB_OUTPUT
           echo "percy_url=$url" >> $GITHUB_OUTPUT
-          echo "Percy build URL: $url"
       - name: Check extracted Percy URL
         run: |
           echo "Extracted Percy URL: ${{ steps.parse_results.outputs.percy_url }}"
