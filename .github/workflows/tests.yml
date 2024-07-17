@@ -47,6 +47,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       percy_url: ${{ steps.extract-url.outputs.percy_url }}
+      total_tests: ${{ steps.parse_results.outputs.total_tests }}
+      passed_tests: ${{ steps.parse_results.outputs.passed_tests }}
+      failed_tests: ${{ steps.parse_results.outputs.failed_tests }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -88,6 +91,15 @@ jobs:
       - name: Check extracted Percy URL
         run: |
           echo "Extracted Percy URL: ${{ steps.extract-url.outputs.percy_url }}"
+      - name: Parse Test Results
+        id: parse_results
+        run: |
+          TOTAL_TESTS=$(grep -oP 'Tests:\s+\K\d+' test_output.log)
+          PASSED_TESTS=$(grep -oP 'Tests:\s+\d+\s+passed\s+\(\K\d+' test_output.log)
+          FAILED_TESTS=$((TOTAL_TESTS - PASSED_TESTS))
+          echo "total_tests=$TOTAL_TESTS" >> $GITHUB_OUTPUT
+          echo "passed_tests=$PASSED_TESTS" >> $GITHUB_OUTPUT
+          echo "failed_tests=$FAILED_TESTS" >> $GITHUB_OUTPUT
     
   comment:
     name: Comment Percy results
@@ -106,11 +118,20 @@ jobs:
         with:
           message: |
             ### Percy Visual Test Results
-            [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }})
+            **Percy Dashboard:** [View Detailed Report](${{ needs.visual_tests.outputs.percy_url }})
+
             **Summary:**
-            - Visual diff locations
-            - [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }})
-            **Instructions for reviewers:**
-            - Access the Percy dashboard to review visual changes.
+            - **Total Tests Run:** ${{ needs.visual_tests.outputs.total_tests }}
+            - **Tests Passed:** ${{ needs.visual_tests.outputs.passed_tests }}
+            - **Tests Failed:** ${{ needs.visual_tests.outputs.failed_tests }}
+
+            **Environment:**
+            - **Node.js Version:** 18.x
+            - **OS:** Ubuntu-latest
+
+            **Instructions for Reviewers:**
+            - Click on the [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }}) link to view detailed visual diffs.
+            - Review the visual changes highlighted in the report.
+            - Approve or request changes based on the visual differences.
           comment_tag: execution
           mode: recreate
