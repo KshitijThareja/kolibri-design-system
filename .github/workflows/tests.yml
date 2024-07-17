@@ -46,10 +46,7 @@ jobs:
     if: ${{ github.event_name == 'pull_request' && needs.test.result == 'success' }}
     runs-on: ubuntu-latest
     outputs:
-      percy_url: ${{ steps.parse_results.outputs.percy_url }}
-      total_tests: ${{ steps.parse_results.outputs.total_tests }}
-      passed_tests: ${{ steps.parse_results.outputs.passed_tests }}
-      failed_tests: ${{ steps.parse_results.outputs.failed_tests }}
+      percy_url: ${{ steps.extract-url.outputs.percy_url }}
     steps:
       - uses: actions/checkout@v4
       - name: Use Node.js
@@ -81,20 +78,16 @@ jobs:
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
 
-      - name: Parse results
-        id: parse_results
+      - name: Extract Percy build URL
+        id: extract-url
         run: |
           url=$(grep -o 'https://percy.io/[a-zA-Z0-9/_-]*' test-output.log | tail -1)
-          TOTAL_TESTS=$(grep -oP 'Tests:\s+\K\d+' test-output.log)
-          PASSED_TESTS=$(grep -oP 'Tests:\s+\d+\s+passed\s+\(\K\d+' test-output.log)
-          FAILED_TESTS=$((TOTAL_TESTS - PASSED_TESTS))
-          echo "total_tests=$TOTAL_TESTS" >> $GITHUB_OUTPUT
-          echo "passed_tests=$PASSED_TESTS" >> $GITHUB_OUTPUT
-          echo "failed_tests=$FAILED_TESTS" >> $GITHUB_OUTPUT
+          echo "PERCY_BUILD_URL=$url" >> $GITHUB_ENV
           echo "percy_url=$url" >> $GITHUB_OUTPUT
+          echo "Percy build URL: $url"
       - name: Check extracted Percy URL
         run: |
-          echo "Extracted Percy URL: ${{ steps.parse_results.outputs.percy_url }}"
+          echo "Extracted Percy URL: ${{ steps.extract-url.outputs.percy_url }}"
     
   comment:
     name: Comment Percy results
@@ -109,16 +102,12 @@ jobs:
         uses: thollander/actions-comment-pull-request@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PERCY_BUILD_URL: ${{ env.PERCY_BUILD_URL }}
         with:
           message: |
             ### Percy Visual Test Results
             **Percy Dashboard:** [View Detailed Report](${{ needs.visual_tests.outputs.percy_url }})
-
-            **Summary:**
-            - **Total Tests Run:** ${{ needs.visual_tests.outputs.total_tests }}
-            - **Tests Passed:** ${{ needs.visual_tests.outputs.passed_tests }}
-            - **Tests Failed:** ${{ needs.visual_tests.outputs.failed_tests }}
-
+            
             **Environment:**
             - **Node.js Version:** 18.x
             - **OS:** Ubuntu-latest
