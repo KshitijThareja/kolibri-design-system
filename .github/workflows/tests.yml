@@ -39,4 +39,3 @@ jobs:
         npm rebuild node-sass
     - name: Run tests
       run: yarn test
-      
