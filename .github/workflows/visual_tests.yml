@@ -75,17 +75,24 @@ jobs:
             });
             const bot_comment = comments.find(comment => comment.user.login === 'github-actions[bot]' && comment.body.includes('### Percy Visual Test Results'));
             return bot_comment ? bot_comment.id : null;
-      - name: Define comment body
+      - name: Create comment body file
         run: |
-          printf "comment_body=### Percy Visual Test Results \n\n\
-          **Percy Dashboard:** [View Detailed Report](${{ needs.visual_tests.outputs.percy_url }})\n\n\
-          **Environment:**\n\
-          - **Node.js Version:** 18.x\n\
-          - **OS:** Ubuntu-latest\n\n\
-          **Instructions for Reviewers:**\n\
-          - Click on the [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }}) link to view detailed visual diffs.\n\
-          - Review the visual changes highlighted in the report.\n\
-          - Approve or request changes based on the visual differences.\n" >> $GITHUB_ENV
+          cat <<EOF > comment_body.txt
+          ### Percy Visual Test Results 
+      
+          **Percy Dashboard:** [View Detailed Report](${{ needs.visual_tests.outputs.percy_url }})
+      
+          **Environment:**
+          - **Node.js Version:** 18.x
+          - **OS:** Ubuntu-latest
+      
+          **Instructions for Reviewers:**
+          - Click on the [Percy Dashboard](${{ needs.visual_tests.outputs.percy_url }}) link to view detailed visual diffs.
+          - Review the visual changes highlighted in the report.
+          - Approve or request changes based on the visual differences.
+          EOF
+      - name: Set comment body
+        run: echo "comment_body=$(cat comment_body.txt)" >> $GITHUB_ENV
       - name: Create comment
         if: steps.find-comment.outputs.comment_id == ''
         uses: actions/github-script@v7
