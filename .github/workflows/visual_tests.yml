@@ -63,18 +63,6 @@ jobs:
     if: ${{ needs.visual_tests.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Find existing comment
-        id: find-comment
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const { data: comments } = await github.rest.issues.listComments({
-              ...context.repo,
-              issue_number: context.issue.number,
-            });
-            const comment = comments.find(comment => comment.body.includes('### Percy Visual Test Results'));
-            return comment ? comment.id : null;
-          result-encoding: string
       - name: Define comment body
         run: |
             echo "### Percy Visual Test Results
@@ -97,7 +85,7 @@ jobs:
             const fs = require('fs');
             const commentBody = fs.readFileSync('comment_body.md', 'utf8');
             
-            const { data: comments } = await github.issues.listComments({
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number
