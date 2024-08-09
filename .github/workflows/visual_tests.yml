@@ -94,14 +94,14 @@ jobs:
             const comment = comments.find(comment => comment.body.includes('### Percy Visual Test Results'));
       
             if (comment) {
-              await github.issues.updateComment({
+              await github.rest.issues.updateComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 comment_id: comment.id,
                 body: commentBody
               });
             } else {
-              await github.issues.createComment({
+              await github.rest.issues.createComment({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: context.issue.number,
