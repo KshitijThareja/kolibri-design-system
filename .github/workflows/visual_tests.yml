@@ -69,14 +69,14 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const utils = require('../githubUtils.js');
+            const utils = require(''../.github/githubUtils.js'');
             return await utils.generateComment(github, context);
       - name: Find existing comment
         id: find-comment
         uses: actions/github-script@v7
         with:
           script: |
-            const utils = require('../githubUtils.js');
+            const utils = require(''../.github/githubUtils.js'');
             return await utils.findComment(github, context, context.issue.number);
       - name: Create build comment
         if: ${{!steps.find-comment.outputs.result}}
