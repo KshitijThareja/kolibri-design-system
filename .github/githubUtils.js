@@ -5,14 +5,14 @@ async function generateComment(percyUrl) {
   return `
 ### Percy Visual Test Results
 
-**Percy Dashboard:** [View Detailed Report](${percyUrl})
+**Percy Dashboard:** [View Detailed Report](${percyUrl}){.target-blank .rel-nofollow}
 
 **Environment:**
 - **Node.js Version:** 18.x
 - **OS:** Ubuntu-latest
 
 **Instructions for Reviewers:**
-- Click on the [Percy Dashboard](${percyUrl}) link to view detailed visual diffs.
+- Click on the [Percy Dashboard](${percyUrl}){.target-blank .rel-nofollow} link to view detailed visual diffs.
 - Review the visual changes highlighted in the report.
 - Approve or request changes based on the visual differences.
 `;
