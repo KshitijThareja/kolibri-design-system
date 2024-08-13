@@ -73,7 +73,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const percyUrl = ${{ needs.visual_tests.outputs.percy_url }};
+            const percyUrl = "${{ needs.visual_tests.outputs.percy_url }}";
             const utils = require('./.github/githubUtils.js');
             return await utils.generateComment(percyUrl);
       - name: Find existing comment
