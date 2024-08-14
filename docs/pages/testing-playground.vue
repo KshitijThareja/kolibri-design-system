@@ -9,6 +9,7 @@
   <div id="testing-playground" style="padding: 24px">
     <component :is="component" v-bind="componentProps">
       <template v-for="(slot, name) in slots">
+        <!-- eslint-disable vue/no-v-html -->
         <component
           :key="name"
           v-if="slot.element"
