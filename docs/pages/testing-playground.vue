@@ -7,7 +7,16 @@
     Please do not modify the contents of this file.
   -->
   <div id="testing-playground" style="padding: 24px">
-    <component :is="component" v-bind="componentProps" />
+    <component :is="component" v-bind="componentProps">
+      <template v-for="(slot, name) in slots" :slot="[name === 'default' ? '' : name]">
+        <component
+          v-if="slot.element"
+          :is="slot.element"
+          v-bind="slot.elementProps"
+          v-html="slot.innerHTML"
+        />
+      </template>
+    </component>
   </div>
 
 </template>
@@ -32,8 +41,24 @@
          * @type {Object} The props to be passed to the dynamically rendered component.
          */
         componentProps: {},
+        /**
+         * @type {Object} The slots to be passed to the dynamically rendered component.
+         */
+        slots: {},
       };
     },
+
+    /**
+     * Computed property that filters out the default slot from the slots object,
+     * returning only the named slots.
+     */
+    // computed: {
+    //   namedSlots() {
+    //     // eslint-disable-next-line no-unused-vars
+    //     const { default: defaultSlot, ...rest } = this.slots;
+    //     return rest;
+    //   },
+    // },
 
     /**
      * Adds an event listener for messages from the test runner.
@@ -59,6 +84,7 @@
         if (event.data.type === 'RENDER_COMPONENT') {
           this.component = event.data.component;
           this.componentProps = event.data.props;
+          this.slots = event.data.slots || {};
         }
       },
     },
