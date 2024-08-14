@@ -8,8 +8,9 @@
   -->
   <div id="testing-playground" style="padding: 24px">
     <component :is="component" v-bind="componentProps">
-      <template v-for="(slot, name) in slots" :slot="[name === 'default' ? '' : name]">
+      <template v-for="(slot, name) in slots">
         <component
+          :key="name"
           v-if="slot.element"
           :is="slot.element"
           v-bind="slot.elementProps"
