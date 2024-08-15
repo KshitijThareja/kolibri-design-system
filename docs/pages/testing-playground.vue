@@ -8,13 +8,14 @@
   -->
   <div id="testing-playground" style="padding: 24px">
     <component :is="component" v-bind="componentProps">
+      <!-- Render slots if provided -->
       <template v-for="(slot, name) in slots">
         <!-- eslint-disable vue/no-v-html -->
         <component
-          :key="name"
-          v-if="slot.element"
           :is="slot.element"
+          v-if="slot.element"
           v-bind="slot.elementProps"
+          :key="name"
           v-html="slot.innerHTML"
         />
       </template>
@@ -49,18 +50,6 @@
         slots: {},
       };
     },
-
-    /**
-     * Computed property that filters out the default slot from the slots object,
-     * returning only the named slots.
-     */
-    // computed: {
-    //   namedSlots() {
-    //     // eslint-disable-next-line no-unused-vars
-    //     const { default: defaultSlot, ...rest } = this.slots;
-    //     return rest;
-    //   },
-    // },
 
     /**
      * Adds an event listener for messages from the test runner.
