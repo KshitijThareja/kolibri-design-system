@@ -1,6 +1,3 @@
-const fs = require('fs');
-const path = require('path');
-
 async function generateComment(percyUrl) {
   return `
 ### Percy Visual Test Results
