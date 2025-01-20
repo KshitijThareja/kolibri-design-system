@@ -42,7 +42,7 @@ jobs:
             ${{ runner.OS }}-node-
       - name: Install dependencies
         run: |
-          yarn --frozen-lockfile
+          yarn
           npm rebuild node-sass
       - name: Download Chromium
         run: npx puppeteer browsers install chrome
