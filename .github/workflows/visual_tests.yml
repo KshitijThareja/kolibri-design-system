@@ -20,7 +20,7 @@ jobs:
     name: Frontend Visual Tests
     needs: pre_job
     if: ${{ needs.pre_job.outputs.should_skip != 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     environment: percy_tests
     outputs:
       percy_url: ${{ steps.extract-url.outputs.percy_url }}
