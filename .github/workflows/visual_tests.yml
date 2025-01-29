@@ -47,8 +47,6 @@ jobs:
       - name: Download Chromium
         run: |
           npx puppeteer browsers install chrome
-          export CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox
-
       - name: Extract jsdocs and environment info 
         run: yarn pregenerate
       - name: Run visual tests
